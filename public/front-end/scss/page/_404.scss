@@ -1,0 +1,16 @@
+.page-not-found {
+  @extend .p-t-70;
+  @extend .p-b-100;
+  h2{
+    font-size: 200px;
+    line-height: 200px;
+    color: $secondary-color;
+    font-weight: $font-weight-bold;
+  }
+  h6{
+    font-size: 20px;
+    line-height: 28px;
+    color: $blue-grey-800;
+    font-weight: $font-weight-normal;
+  }
+}

@@ -1,0 +1,71 @@
+.our-history {
+  .year-list {
+    @extend .m-b-0;
+    li{
+      @extend .p-l-20;
+      position: relative;
+      & + li{
+        @extend .p-t-30;
+      }
+      &:before{
+        content: "";
+        background-color: $grey-800;
+        height: 100%;
+        width: 1px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      h4{
+        @extend .m-b-0;
+        @extend .m-t-0;
+        font-weight: $font-weight-light;
+        font-size: 20px;
+        line-height: 25px;
+        color: $grey-400;
+        position: relative;
+        &:before {
+          content: "";
+          background-color: #bdbdbd;
+          position: absolute;
+          top: 50%;
+          left: -26px;
+          transform: translateY(-50%);
+          border: 4px solid #2d3035;
+          border-radius: 100%;
+          width: 14px;
+          height: 14px;
+        }
+      }
+      p{
+        @extend .m-b-0;
+        @extend .m-t-0;
+        font-size: 15px;
+        line-height: 24px;
+        color: $grey-400;
+        font-family: $font-weight-light;
+      }
+    }
+  }
+
+  .map-area{
+    h5{
+      @extend .m-b-5;
+      @extend .m-t-0;
+      font-size: 22px;
+      line-height: 26px;
+      color: $grey-400;
+    }
+    p{
+      @extend .m-t-0;
+      font-size: 14px;
+      line-height: 20px;
+      color: $grey-400;
+    }
+  }
+}
+.fun-fact.about-page {
+  .fun-fact-box {
+      color: $grey-700;
+  }
+}

@@ -1,0 +1,49 @@
+.teacher-info {
+  .teacher-contact {
+    li {
+      font-size: 16px;
+      line-height: 24px;
+      color: $grey-700;
+      i {
+        font-size: 16px;
+        @extend .m-r-5;
+      }
+      & + li {
+        margin-left: 40px;
+      }
+    }
+  }
+  .teacher-location {
+    @extend .m-b-10;
+    label {
+      font-size: 18px;
+      line-height: 24px;
+      color: $grey-900;
+      @extend .m-b-5;
+    }
+  }
+  .skill-grp {
+    > label {
+      font-size: 18px;
+      line-height: 24px;
+      color: $grey-900;
+      @extend .m-b-5;
+    }
+    ul {
+      li {
+        @extend .m-b-20;
+        label {
+          line-height: 30px;
+          display: block;
+          @extend .m-b-0;
+        }
+        .progress {
+          .progress-bar{
+            height: 10px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}

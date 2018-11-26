@@ -1,0 +1,40 @@
+.our-team-page {
+  .section-title.right {
+    p {
+      font-size: 16px;
+    }
+  }
+  .team-box {
+    @extend .m-t-30;
+  }
+
+  .upcoming-event {
+    .common-cnt {
+      .section-top {
+        p {
+          color: $grey-500;
+        }
+      }
+      .staf-info {
+        .counter.timer {
+          font-size: 40px;
+          line-height: 40px;
+          color: $grey-500;
+          @extend .m-b-10;
+          display: block;
+        }
+        p{
+          font-size: 16px;
+          line-height: 20px;
+          color: $grey-500;
+          font-weight: $font-weight-light;
+          @extend .m-b-0;
+        }
+      }
+    }
+  }
+  .our-team{
+    @extend .p-t-70;
+    @extend .p-b-50;
+  }
+}

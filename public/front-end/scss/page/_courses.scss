@@ -1,0 +1,49 @@
+.best-courses-list {
+  .courses-box {
+    margin-top: 30px;
+    background-color: $white;
+    .courses-img {
+      img {
+        filter: none;
+        -webkit-filter: none;
+      }
+    }
+  }
+}
+
+.upcoming-event.inner-event {
+  .common-cnt {
+    .section-top {
+      p {
+        color: $grey-300;
+        @extend .m-b-5;
+      }
+    }
+    .date {
+      @extend .m-b-10;
+      span {
+        color: $grey-500;
+      }
+    }
+    .address{
+      color: $grey-500;
+    }
+  }
+  .courses-detail{
+    li{
+      float: left;
+      width: 50%;
+      font-size: 14px;
+      line-height: 26px;
+      color: $grey-500;
+      label{
+        @extend .m-b-0;
+        font-weight: $font-weight-light;
+        min-width: 100px;
+      }
+      span{
+        font-weight: $font-weight-semi;
+      }
+    }
+  }
+}

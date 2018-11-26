@@ -1,0 +1,270 @@
+@media (max-width: 575px) {
+  #hero {
+    .slider {
+      .slider_form {
+        bottom: -105px;
+      }
+    }
+  }
+  .why-choose-us {
+    .common-cnt {
+      .btn-primary {
+        display: block;
+        margin-bottom: 15px !important;
+      }
+    }
+  }
+  .service-section {
+    .services-btn-grp {
+      .service-btn {
+        width: calc(100% - 0px);
+        a {
+          margin: 0 0 15px !important;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 767px) {
+  .main_header {
+    #top-nav {
+      text-align: center;
+      .text-right{
+        text-align: center !important;
+      }
+      .btn.btn-link {
+        padding-left: 0;
+        padding-right: 8px;
+        &:last-child {
+          &::before {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+  .navbar .navbar-toggler {
+    width: 57px;
+    height: 41px;
+    margin-top: 5px;
+  }
+  #hero {
+    .slider {
+      .title {
+        font-size: 30px;
+        line-height: 35px;
+        margin-top: 0;
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .about-us-section {
+    .box-img {
+      margin-bottom: 20px;
+    }
+  }
+  .our-best-service {
+    .service-box {
+      text-align: center;
+    }
+  }
+  .why-choose-us {
+    .common-cnt {
+      .section-top {
+        p {
+          font-size: 26px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+  .home-blog {
+    .blog-box {
+      margin-bottom: 30px;
+    }
+  }
+  #footer {
+    .form {
+      .form-group {
+        margin-bottom: 5px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+      .float-right {
+        width: 100%;
+        .form-group {
+          width: 100%;
+        }
+      }
+    }
+    .copyright {
+      text-align: center;
+      .up {
+        text-align: center;
+      }
+    }
+  }
+  .best-courses-list {
+    .courses-box {
+      .courses-img {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .upcoming-event.inner-event {
+    .courses-detail {
+      li {
+        width: 100%;
+      }
+    }
+  }
+  .our-team-page {
+    .upcoming-event {
+      .common-cnt {
+        .staf-info {
+          text-align: center;
+          p {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .enquiry-section {
+    .text-sm-center {
+      text-align: center;
+    }
+  }
+  .about-us-section {
+    .opening-hours {
+      ul {
+        li {
+          line-height: 25px;
+          margin-bottom: 10px;
+          label {
+            display: block;
+          }
+          span {
+            padding-left: 25px;
+          }
+        }
+      }
+    }
+    .row.justify-content-between {
+      .p-r-0 {
+        padding-right: 15px;
+      }
+      .p-l-0 {
+        padding-left: 15px;
+      }
+    }
+  }
+  .our-history {
+    .map-area {
+      h5 {
+        margin-top: 20px;
+      }
+    }
+  }
+  .page-not-found {
+    h2 {
+      font-size: 100px;
+      line-height: 100px;
+    }
+  }
+  .teacher-info {
+    .teacher-contact {
+      margin-top: 20px;
+    }
+  }
+  .event-section {
+    .event-list {
+      > li {
+        .event-box {
+          .event-img {
+            width: 100%;
+            text-align: center;
+          }
+          .event-dep{
+            width: 100%;
+            padding: 15px;
+            .event-time-date {
+              li{
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .about-us-section {
+    .section-bottom {
+      ul {
+        li {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+  .our-team {
+    .team-box {
+      margin-bottom: 30px;
+    }
+  }
+  .section-title.left {
+    padding-bottom: 0;
+  }
+  .our-partner {
+    padding-bottom: 20px;
+    .out-partner-logo {
+      a {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .upcoming-event {
+    .common-cnt {
+      > p {
+        .btn {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  .teacher-info {
+    .teacher-contact {
+      li {
+        float: none !important;
+        width: 100%;
+        margin: 0 0 10px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .main_header {
+    #navbar {
+      .navbar {
+        .input-group {
+          width: 220px;
+        }
+      }
+    }
+  }
+}
