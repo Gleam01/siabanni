@@ -203,3 +203,7 @@ Route::get('register-pursuit/{step}', ['uses' => 'Auth\RegisterController@pursui
 Route::resource('user', 'UserController', ['except' => ['create', 'store']]);
 Route::resource('student', 'StudentController', ['except' => ['create', 'store']]);
 Route::resource('folder', 'FolderController', ['except' => ['create', 'store']]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
