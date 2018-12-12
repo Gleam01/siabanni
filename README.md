@@ -27,6 +27,7 @@ NB: replace the stars (*) by your database configurations
 Now, type in order these commands in a terminal after positionning in the project folder :
 ```
 1-  composer update --no-scripts
-2- php artisan migrate --seed
-3- php artisan serve
+2- composer require laravel/cashier
+3- php artisan migrate --seed
+4- php artisan serve
 ```
