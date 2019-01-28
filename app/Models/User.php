@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
-class User extends Authenticatable// implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.

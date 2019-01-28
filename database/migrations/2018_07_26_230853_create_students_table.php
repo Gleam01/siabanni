@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('province');
             $table->string('city');
             $table->string('status',30)->nullable();
-            $table->double('reduction')->default(0.0);
+            $table->double('reduction')->default(0.0)->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
 

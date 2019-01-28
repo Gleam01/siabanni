@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolFee extends Model
 {
   protected $fillable = [
-    'montant', 'type', 'student_id'
+    'pay', 'letToPay', 'type', 'student_id'
   ];
 
   public function student()

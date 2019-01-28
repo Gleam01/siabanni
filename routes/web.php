@@ -183,27 +183,12 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'dashboard']);
 
-//Generals informations GET/post
-Route::get('register-step-two', [
-  'uses' => 'Auth\RegisterController@showRegistrationStepTwoForm',
-  'as' => 'register.step-two'
-]);
-Route::post('register-step-two', [
-  'uses' => 'Auth\RegisterController@registerStepTwo', 'as' => 'register.step.two']);
 
-//Folders GET/post
-Route::get('register-step-three', ['uses' => 'Auth\RegisterController@showRegistrationStepThreeForm', 'as' => 'register.step-three']);
-Route::post('register-step-three', ['uses' => 'Auth\RegisterController@registerStepThree', 'as' => 'register.step.three']);
-
-Route::get('register-training-choosing', ['uses' => 'Auth\RegisterController@showRegistrationTrainingChoosingForm', 'as' => 'register.training-choosing']);
-Route::post('register-training-choosing', ['uses' => 'Auth\RegisterController@registerTrainingChoosing', 'as' => 'register.training.choosing']);
-
-Route::get('register-pursuit/{step}', ['uses' => 'Auth\RegisterController@pursuitRegistration', 'as' => 'register.pursuit'])->where('step', '[1-4]?');
+Route::get('pursuit-registration/{step}', ['uses' => 'HomeController@pursuitRegistration', 'as' => 'register.pursuit'])->where('step', '[1-4]?');
 
 Route::resource('user', 'UserController', ['except' => ['create', 'store']]);
-Route::resource('student', 'StudentController', ['except' => ['create', 'store']]);
-Route::resource('folder', 'FolderController', ['except' => ['create', 'store']]);
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('student', 'StudentController');
+Route::resource('folder', 'FolderController');
+Route::get('/plan', 'PlanController@index')->name('plan.index');
+Route::get('/plan/{plan}', 'PlanController@show')->name('plan.show');
+Route::post('/subscription', 'SubscriptionController@create')->name('subscription.create');

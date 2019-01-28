@@ -33,11 +33,6 @@
               </div>
       			{!! Form::close() !!}
       		</div>
-          <div class="card-footer">
-            <a href="javascript:history.back()" class="btn btn-primary">
-          		<span class="glyphicon glyphicon-circle-arrow-left"></span> Retour
-          	</a>
-          </div>
       	</div>
       </div>
     </section>

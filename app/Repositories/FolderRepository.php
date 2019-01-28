@@ -27,7 +27,7 @@ class FolderRepository extends ResourceRepository
 	}
 
   public function update($id, array $files)
-	{
+  {
     $folder = $this->getById($id);
 
     $studentHavenFolder = DB::table('students')->where('id', $folder->student_id)->first();
@@ -47,7 +47,7 @@ class FolderRepository extends ResourceRepository
 
     if (($paths = $this->pictureManager->update($student, $imagesToDelete, $files))!==false)
 		  $folder->update($paths);
-	}
+  }
 
   public function updateByStaff($id, $rank, $action)
   {
@@ -84,5 +84,14 @@ class FolderRepository extends ResourceRepository
       }
     }
   }
+
+    public function getFolderByUserId(int $id)
+    {
+        return $this->model->where(
+            'student_id',
+            DB::table('students')->where('user_id', $id)->first()->id
+    )->first();
+
+    }
 
 }
