@@ -8,6 +8,8 @@ use App\Http\Requests\{
     StudentStatusRequest
 };
 
+use Carbon\Carbon;
+
 use App\Repositories\{
     StudentRepository,
     TrainingRepository,
@@ -95,7 +97,7 @@ class StudentController extends Controller
         DB::table('student_training')->insert([
             'student_id' => $student->id,
             'training_id' => $request->input('training_id'),
-            'dateOfRegistration' => null,
+            'dateOfRegistration' => Carbon::now(),
             'semester'=> null,
             'cycle' => $request->input('cycle')
         ]);

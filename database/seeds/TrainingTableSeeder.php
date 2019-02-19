@@ -11,12 +11,14 @@ class TrainingTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('trainings')->delete();
+      DB::table('trainings')->truncate();
 
       for ($i=1; $i < 11; $i++) {
         DB::table('trainings')->insert([
           'code' => str_random(10),
           'name' => 'Training Number '.$i,
+          'admissionFees' => rand(5000, 15000),
+          'fees' => rand(15000, 400000),
           'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           'school_id' => rand(1, 10)
         ]);

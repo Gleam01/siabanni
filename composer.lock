@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e5e675da8902a4f03bdf4c4006fb65f",
+    "content-hash": "947df0b980b54b7bc1fb18868caba13e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1929,16 +1929,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.26.0",
+            "version": "v6.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "ba85ad7c1618462083a7e9a542ded929232e8bff"
+                "reference": "570d47d566da6e87413db1fd3a833c42907cb746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/ba85ad7c1618462083a7e9a542ded929232e8bff",
-                "reference": "ba85ad7c1618462083a7e9a542ded929232e8bff",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/570d47d566da6e87413db1fd3a833c42907cb746",
+                "reference": "570d47d566da6e87413db1fd3a833c42907cb746",
                 "shasum": ""
             },
             "require": {
@@ -1950,7 +1950,8 @@
             "require-dev": {
                 "php-coveralls/php-coveralls": "1.*",
                 "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
+                "squizlabs/php_codesniffer": "~2.0",
+                "symfony/process": "~2.8"
             },
             "type": "library",
             "extra": {
@@ -1980,7 +1981,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2018-12-11T21:33:24+00:00"
+            "time": "2019-02-16T17:48:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

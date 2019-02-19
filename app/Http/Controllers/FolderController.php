@@ -18,8 +18,6 @@ use App\Repositories\{
     UserRepository
 };
 
-use App\Models\Plan;
-
 class FolderController extends Controller
 {
     protected $folderRepository,
@@ -101,7 +99,7 @@ class FolderController extends Controller
             $paths = array_merge($paths, ['student_id' => $student->id]);
             $this->folderRepository->store($paths);
             $this->userRepository->update($user_id, ['step' => 3]);
-            return redirect()->route('plan.show', [$this->userRepository->getUserPlanSlug($user_id)]);
+            return redirect()->route('admission.create');
         }
 
         else {
@@ -129,18 +127,13 @@ class FolderController extends Controller
      *
      * @param  \App\Http\Requests\FolderUpdateRequest  $request
      * @param  int  $id
-     * @param  \App\Models\Plan $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(FolderUpdateRequest $request, $id, Plan $plan)
+    public function update(FolderUpdateRequest $request, $id)
     {
         $this->folderRepository->update($id, $request->allFiles());
 
-        if($request->user()->subscribedToPlan($plan->stripe_plan, 'main')) {
-            return redirect()->route('home')->with('success', 'Modification effectué avec succès ! Le paiement des frais d\'admission est déjà fait...');
-        }
-
-        return redirect()->route('plan.show', [$this->userRepository->getUserPlanSlug(auth()->id())]);
+        return redirect()->route('admission.create');
     }
 
     /**

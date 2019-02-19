@@ -179,7 +179,9 @@ Route::prefix('admin')->group(function () {
 Route::post('registerstaff', 'Auth\RegisterController@registerStaff')->name('registerstaff');
 
 
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]);
+
+Auth::routes();
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'dashboard']);
 
@@ -189,6 +191,5 @@ Route::get('pursuit-registration/{step}', ['uses' => 'HomeController@pursuitRegi
 Route::resource('user', 'UserController', ['except' => ['create', 'store']]);
 Route::resource('student', 'StudentController');
 Route::resource('folder', 'FolderController');
-Route::get('/plan', 'PlanController@index')->name('plan.index');
-Route::get('/plan/{plan}', 'PlanController@show')->name('plan.show');
-Route::post('/subscription', 'SubscriptionController@create')->name('subscription.create');
+Route::get('admission', 'AdmissionPaymentController@create')->name('admission.create');
+Route::post('admission', 'AdmissionPaymentController@store')->name('admission.store');

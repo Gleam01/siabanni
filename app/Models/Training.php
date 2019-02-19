@@ -24,9 +24,4 @@ class Training extends Model
   {
     return $this->belongsToMany('App\Models\Student');
   }
-
-    public function plans()
-    {
-        return $this->hasMany('App\Models\Plan');
-    }
 }

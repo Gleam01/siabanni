@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'yassrhadj@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'SmartDev'),
+        'address' => env('MAIL_FROM_ADDRESS', 'siabanni.webapp@courssiabanni.org'),
+        'name' => env('MAIL_FROM_NAME', 'Siabanni Dashboard'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'STARTTLS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
 
     'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('SPARKPOST_SECRET'),
 
     /*
     |--------------------------------------------------------------------------
