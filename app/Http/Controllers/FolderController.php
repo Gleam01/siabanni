@@ -4,23 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\FolderUpdateRequest;
-use App\Http\Requests\DecisionOnFolderRequest;
+use App\Http\Requests\{
+    FolderCreateRequest,
+    FolderUpdateRequest,
+    DecisionOnFolderRequest
+};
 
-use App\Repositories\FolderRepository;
+use App\Management\PictureManagementInterface;
+
+use App\Repositories\{
+    FolderRepository,
+    StudentRepository,
+    UserRepository
+};
+
+use App\Models\Plan;
 
 class FolderController extends Controller
 {
-    protected $folderRepository;
+    protected $folderRepository,
+        $studentRepository,
+        $userRepository;
+
 
     protected $pagination = 10;
 
-    public function __construct(FolderRepository $folderRepository)
-    {
-      $this->middleware('auth');
-      $this->middleware('admin', ['only' => ['index', 'delete']]);
-      $this->middleware('ajax', ['only' => ['accept', 'reject']]);
-      $this->folderRepository = $folderRepository;
+    public function __construct(
+        FolderRepository $folderRepository,
+        StudentRepository $studentRepository,
+        UserRepository $userRepository
+    ) {
+        $this->middleware('auth');
+        $this->middleware('admin', ['only' => ['index', 'delete']]);
+        $this->middleware('ajax', ['only' => ['accept', 'reject']]);
+        $this->folderRepository = $folderRepository;
+        $this->studentRepository = $studentRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -50,6 +69,49 @@ class FolderController extends Controller
     }
 
     /**
+     * Show the form for creating the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $student_id = $this->studentRepository->getStudentByUserId(auth()->user()->id)->id;
+        return view('folders.create', compact('student_id'));
+    }
+
+    /**
+     * Create a new resource in storage.
+     *
+     * @param  \App\Http\Requests\FolderCreateRequest  $request
+     * @param  \App\Management\PictureManagementInterface $manager
+     * @return \Illuminate\Http\Response
+     */
+    public function store(FolderCreateRequest $request, PictureManagementInterface $manager)
+    {
+        $user_id = auth()->user()->id;
+        $student = $this->studentRepository->getStudentByUserId($user_id);
+        $student_folder = array(
+            'id' => $student->id,
+            'firstName' => $student->firstName,
+            'lastName' => $student->lastName
+        );
+
+        if (($paths=$manager->save($student_folder, $request->allFiles()))!==false)
+        {
+            $paths = array_merge($paths, ['student_id' => $student->id]);
+            $this->folderRepository->store($paths);
+            $this->userRepository->update($user_id, ['step' => 3]);
+            return redirect()->route('plan.show', [$this->userRepository->getUserPlanSlug($user_id)]);
+        }
+
+        else {
+            session()->put('image_error', 'Images invalides !');
+            return redirect()->route('folder.create')->withInput();
+        }
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -65,15 +127,20 @@ class FolderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\FolderUpdateRequest  $request
      * @param  int  $id
+     * @param  \App\Models\Plan $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(FolderUpdateRequest $request, $id)
+    public function update(FolderUpdateRequest $request, $id, Plan $plan)
     {
         $this->folderRepository->update($id, $request->allFiles());
 
-        return redirect(route($this->folderRepository->updateRedirectRoute($request, 'folder.index')));
+        if($request->user()->subscribedToPlan($plan->stripe_plan, 'main')) {
+            return redirect()->route('home')->with('success', 'Modification effectué avec succès ! Le paiement des frais d\'admission est déjà fait...');
+        }
+
+        return redirect()->route('plan.show', [$this->userRepository->getUserPlanSlug(auth()->id())]);
     }
 
     /**

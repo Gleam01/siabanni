@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Training extends Model
 {
   protected $fillable = [
-    'code', 'name', 'description', 'fees', 'school_id'
+    'code', 'name', 'description', 'school_id'
   ];
 
   public function options()
@@ -24,4 +24,9 @@ class Training extends Model
   {
     return $this->belongsToMany('App\Models\Student');
   }
+
+    public function plans()
+    {
+        return $this->hasMany('App\Models\Plan');
+    }
 }

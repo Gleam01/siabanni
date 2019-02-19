@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FolderRequest extends FormRequest
+class FolderCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,6 @@ class FolderRequest extends FormRequest
     public function rules()
     {
         return [
-          'student_id' => 'required|numeric|unique:folders',
-          'student_lastName' => 'required|string',
-          'student_firstName' => 'required|string',
           'birthCertificate' => 'required|image',
           'nationalityCertificate' => 'required|image',
           'attestation' => 'required|image',

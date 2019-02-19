@@ -36,4 +36,8 @@ abstract class ResourceRepository
       return $request->user()->admin === 1 ? $admin : 'dashboard';
   }
 
+  public function getStudentIDByUserID($id) {
+      return DB::table('students')->where('user_id', $id)->value('id');
+  }
+
 }

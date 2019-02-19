@@ -7,6 +7,7 @@
 
     <!-- start linking-->
     <link rel="stylesheet" href="{{asset('front-end/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('front-end/css/main.css')}}">
     @yield('styles')
 </head>

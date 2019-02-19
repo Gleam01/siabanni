@@ -18,8 +18,6 @@ class CreateTrainingsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('description');
-            $table->double('fees');
-            $table->double('admissionFees');
             $table->unsignedInteger('school_id');
             $table->timestamps();
 
