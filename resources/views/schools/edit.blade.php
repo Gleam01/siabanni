@@ -38,7 +38,7 @@
                         @if($school->avatar)
                             <div class="col-sm-12">
                                 <h5>Ancienne image de l'entité</h5>
-                                <img src="http://localhost:8000/{{ $school->avatar }}" alt="School picture" class="img-responsive img-thumbnail">
+                                <img src="{{ asset($school->avatar) }}" alt="School picture" class="img-responsive img-thumbnail">
                             </div>
                         @endif
                         <div class="row clearfix" style="margin-top: 20px">

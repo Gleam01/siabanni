@@ -41,7 +41,7 @@
                             <p class="col-sm-4"> <b>Image : </b></p>
                             <div class="col-sm-7">
                                 @if($school->avatar)
-                                    <img src="http://localhost:8000/{{$school->avatar}}" alt="School picture" class="img-responsive img-thumbnail">
+                                    <img src="{{asset($school->avatar)}}" alt="School picture" class="img-responsive img-thumbnail">
                                 @else
                                     <p>Non encore définie</p>
                                 @endif

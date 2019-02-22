@@ -122,42 +122,42 @@
                         <legend> Pièces jointes </legend>
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->birthCertificate}}" alt="Acte de naissance" />
+                            <img src="{{asset($folder->birthCertificate)}}" alt="Acte de naissance" />
                           </div>
                           <legend>Acte de naissance</legend>
                         </figure>
 
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->nationalityCertificate}}" alt="Certificat de nationalité" />
+                            <img src="{{asset($folder->nationalityCertificate)}}" alt="Certificat de nationalité" />
                           </div>
                           <legend>Certificat de nationalité</legend>
                         </figure>
 
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->attestation}}" alt="Attestation de BAC" />
+                            <img src="{{asset($folder->attestation)}}" alt="Attestation de BAC" />
                           </div>
                           <legend>Attestation de BAC</legend>
                         </figure>
 
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->bulletin}}" alt="Bulletin de notes" />
+                            <img src="{{asset($folder->bulletin)}}" alt="Bulletin de notes" />
                           </div>
                           <legend>Bulletin de notes</legend>
                         </figure>
 
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->NICReference}}" alt="Carte d'identité nationale" />
+                            <img src="{{asset($folder->NICReference)}}" alt="Carte d'identité nationale" />
                           </div>
                           <legend>Carte d'identité nationale</legend>
                         </figure>
 
                         <figure class="row">
                           <div class=" offset-md-2 col-md-8">
-                            <img src="{{$folder->picture}}" alt="Photo d'identité" />
+                            <img src="{{asset($folder->picture)}}" alt="Photo d'identité" />
                           </div>
                           <legend>Photo d'identité</legend>
                         </figure>

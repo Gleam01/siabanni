@@ -38,7 +38,7 @@
                         @if($option->avatar)
                             <div class="col-sm-12">
                                 <h5 class="text-center">Ancienne image de l'option</h5>
-                                <img src="http://localhost:8000/{{ $option->avatar }}" alt="School picture" class="img-responsive img-thumbnail">
+                                <img src="{{ asset($option->avatar) }}" alt="School picture" class="img-responsive img-thumbnail">
                             </div>
                         @else
                             <div class="col-sm-12">
@@ -69,7 +69,7 @@
                                                 @if ($option->school_id == $training->id)
                                                     <option selected="selected" value="{{$training->id}}">{{$training->name}}</option>
                                                 @else
-                                                    <option value="{{$school->id}}">{{$training->name}}</option>
+                                                    <option value="{{$training->id}}">{{$training->name}}</option>
                                                 @endif
                                             @endforeach
                                         </select>

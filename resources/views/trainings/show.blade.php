@@ -55,7 +55,7 @@
                             <p class="col-sm-4"> <b>Image : </b></p>
                             <div class="col-sm-7">
                                 @if($training->avatar)
-                                    <img src="http://localhost:8000/{{$training->avatar}}" alt="Training picture" class="img-responsive img-thumbnail">
+                                    <img src="{{asset($training->avatar)}}" alt="Training picture" class="img-responsive img-thumbnail">
                                 @else
                                     <p>Non encore définie</p>
                                 @endif

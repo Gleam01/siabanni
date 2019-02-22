@@ -38,7 +38,7 @@
                         @if($training->avatar)
                             <div class="col-sm-12">
                                 <h5>Ancienne image de la filière</h5>
-                                <img src="http://localhost:8000/{{ $training->avatar }}" alt="Training picture" class="img-responsive img-thumbnail">
+                                <img src="{{ asset($training->avatar) }}" alt="Training picture" class="img-responsive img-thumbnail">
                             </div>
                         @else
                             <div class="col-sm-12">
