@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class School extends Model
 {
   protected $fillable = [
-    'name', 'description', 'contact'
+    'name', 'description', 'contact', 'avatar'
   ];
 
   public function staffs()

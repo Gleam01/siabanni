@@ -11,7 +11,7 @@ class TrainingTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('trainings')->truncate();
+      DB::table('trainings')->delete();
 
       for ($i=1; $i < 11; $i++) {
         DB::table('trainings')->insert([
@@ -20,6 +20,7 @@ class TrainingTableSeeder extends Seeder
           'admissionFees' => rand(5000, 15000),
           'fees' => rand(15000, 400000),
           'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          'avatar' => 'trainings_avatars/siabanni_db.png',
           'school_id' => rand(1, 10)
         ]);
       }

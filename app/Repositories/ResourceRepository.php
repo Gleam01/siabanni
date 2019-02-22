@@ -5,7 +5,12 @@ use Illuminate\Support\Facades\DB;
 abstract class ResourceRepository
 {
 
-  protected $model;
+	protected $model;
+	
+	public function getAll()
+	{
+		return $this->model->all();
+	}
 
   public function getPaginate($n)
 	{

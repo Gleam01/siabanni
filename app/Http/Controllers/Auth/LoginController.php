@@ -36,16 +36,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->setRedirectTo();
     }
 
-    public function setRedirectTo()
+    public function redirectPath()
     {
         if (Auth::user() !== null) {
-          $this->redirectTo = Auth::user()->admin==1 ? '/admin' : '/home';
+          return Auth::user()->admin==1 ? '/admin' : '/home';
         }
         else {
-          $this->redirectTo = '/home';
+          return '/home';
         }
     }
 }

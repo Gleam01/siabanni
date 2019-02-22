@@ -1,6 +1,7 @@
 @extends('front-end.layout')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <style type="text/css">
         .panel-title {
         display: inline;
@@ -22,9 +23,9 @@
 
 @section('content')
     <div class="container">
-        <h1>Paiement des frais d'admission</h1>  
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+        <h2 class="text-center">Paiement des frais d'admission</h2>  
+        <div class="row w-90 mx-auto">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default credit-card-box">
                     <div class="panel-heading display-table" >
                         <div class="row display-tr" >
@@ -73,12 +74,12 @@
                             </div>
                             <div class='form-row row'>
                                 <div class='col-md-12 error form-group hide'>
-                                    <div class='alert-danger alert'>Please correct the errors and try again.</div>
+                                    <div class='alert-danger alert'>Veuillez remplir correctement les champs puis validez svp !</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now {{$training->admissionFees}} FCFA</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Payez les ${{$training->admissionFees}}USD</button>
                                 </div>
                             </div>
                         </form>

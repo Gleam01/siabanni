@@ -21,8 +21,8 @@ class CreateFoldersTable extends Migration
             $table->string('bulletin');
             $table->string('NICReference');
             $table->string('picture');
-            $table->unsignedInteger('validateByStaffLevelTwo')->default(0);
-            $table->unsignedInteger('validateByStaffLevelThree')->default(0);
+            $table->integer('validateByStaffLevelOne')->default(0);
+            $table->integer('validateByStaffLevelTwo')->default(0);
             $table->unsignedInteger('student_id');
             $table->timestamps();
 

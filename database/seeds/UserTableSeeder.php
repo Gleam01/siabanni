@@ -14,9 +14,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
-        
-        for ($i=1; $i < 3; $i++) {
+        DB::table('users')->delete();
+        $lastNames = ['TOKO', 'ALLADATIN', 'HADJ'];
+        $firstNames = ['Kafid', 'Judicaël', 'Yassr'];
+        $offices = ['Chef scolarité central', 'Chef scolarité', 'Administrateur'];
+        for ($i=1; $i < 4; $i++) {
             DB::table('users')->insert([
                 'login' => 'Staff '.$i,
                 'email' => 'staff'.$i.'@siabanni.com',
@@ -25,6 +27,15 @@ class UserTableSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'step' => null,
                 'rank' => $i
+            ]);
+
+            DB::table('staffs')->insert([
+                'lastName' => $lastNames[$i-1],
+                'firstName' => $firstNames[$i-1],
+                'phone' => '96257898',
+                'office' => $offices[$i-1],
+                'school_id' => $i,
+                'user_id' => $i
             ]);
         }
     }

@@ -8,20 +8,24 @@ use Stripe;
 
 use App\Repositories\{
     SchoolFeeRepository,
-    TrainingRepository
+    TrainingRepository,
+    UserRepository,
+    StudentRepository
 };
-
-use Illuminate\Support\Facades\DB;
 
 class AdmissionPaymentController extends Controller
 {
-    protected $schoolFeeRepository, $trainingRepository;
+    protected $schoolFeeRepository, $trainingRepository, $userRepository, $studentRepository;
 
-    public function __construct(SchoolFeeRepository $schoolFeeRepository, TrainingRepository $trainingRepository)
+    public function __construct(SchoolFeeRepository $schoolFeeRepository, 
+    TrainingRepository $trainingRepository, UserRepository $userRepository,
+    StudentRepository $studentRepository)
     {
         $this->middleware('auth');
         $this->schoolFeeRepository = $schoolFeeRepository;
         $this->trainingRepository = $trainingRepository;
+        $this->userRepository = $userRepository;
+        $this->studentRepository = $studentRepository;
     }
 
     /**
@@ -32,7 +36,7 @@ class AdmissionPaymentController extends Controller
     public function create()
     {
         $training = $this->trainingRepository->getTrainingByUserId(auth()->user()->id);
-        return view('admission.create', compact('training'));
+        return view('admissions.create', compact('training'));
     }
 
     /**
@@ -57,8 +61,10 @@ class AdmissionPaymentController extends Controller
             'pay' => $request->amount,
             'letToPay' => 0.00,
             'type' => 'Admission',
-            'student_id' => $this->schoolFeeRepository->getStudentIDByUserID(auth()->user()->id)
+            'student_id' => $this->studentRepository->getStudentByUserId($user->id)->id
         ]);
+
+        $this->userRepository->update($user->id, ['step' => 4]);
 
         return redirect()->route('dashboard')->with('success', 'Paiement effectué avec succès ! Votre inscription a été bien achevé !');
     } 

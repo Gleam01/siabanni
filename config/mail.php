@@ -62,6 +62,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Global "Reply To" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all e-mails sent by your application to be replied to
+    | the same address. Here, you may specify a name and address that is
+    | used globally for all e-mails that are been reply to your application.
+    |
+    */
+    'reply_to' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'siabanni.webapp@courssiabanni.org'),
+        'name' => env('MAIL_FROM_NAME', 'Siabanni Dashboard'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
     |--------------------------------------------------------------------------
     |

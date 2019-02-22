@@ -24,7 +24,6 @@ class StudentStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|numeric',
             'status' => 'required|string',
         ];
     }

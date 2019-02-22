@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
   protected $fillable = [
-    'code', 'name', 'description', 'training_id'
+    'code', 'name', 'description', 'avatar', 'training_id'
   ];
 
   public function training()

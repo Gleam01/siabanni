@@ -18,6 +18,7 @@ class CreateOptionsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('description');
+            $table->string('avatar');
             $table->unsignedInteger('training_id');
             $table->timestamps();
 

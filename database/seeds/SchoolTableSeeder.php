@@ -29,7 +29,8 @@ class SchoolTableSeeder extends Seeder
         DB::table('schools')->insert([
           'name' => 'School Number '.$i,
           'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          'contact' => $this->randNumber()
+          'contact' => $this->randNumber(),
+          'avatar' => 'schools_avatars/siabanni_db.png'
         ]);
       }
     }

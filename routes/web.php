@@ -163,25 +163,28 @@ Route::prefix('admin')->group(function () {
 
   Route::get('search-results', ['uses' => 'BackViewController@search_results', 'as' => 'back.search-results']);
 
-  Route::put('accept-by-staff-level-two', ['uses' => 'FolderController@acceptByStaffLevelTwo', 'as' => 'folder.accept.staff.two']);
+  Route::put('accept-by-staff-level-one/{folder}', ['uses' => 'FolderController@acceptByStaffLevelOne', 'as' => 'folder.accept.staff.one']);
 
-  Route::put('reject-by-staff-level-two', ['uses' => 'FolderController@rejectByStaffLevelTwo', 'as' => 'folder.reject.staff.two']);
+  Route::put('reject-by-staff-level-one/{folder}', ['uses' => 'FolderController@rejectByStaffLevelOne', 'as' => 'folder.reject.staff.one']);
 
-  Route::put('accept-by-staff-level-three', ['uses' => 'FolderController@acceptByStaffLevelThree', 'as' => 'folder.accept.staff.three']);
+  Route::put('accept-by-staff-level-two/{folder}', ['uses' => 'FolderController@acceptByStaffLevelTwo', 'as' => 'folder.accept.staff.two']);
 
-  Route::put('reject-by-staff-level-three', ['uses' => 'FolderController@rejectByStaffLevelThree', 'as' => 'folder.reject.staff.three']);
+  Route::put('reject-by-staff-level-two/{folder}', ['uses' => 'FolderController@rejectByStaffLevelTwo', 'as' => 'folder.reject.staff.two']);
 
-  Route::put('student-status', ['uses' => 'StudentController@updateStatus', 'as' => 'student.status']);
+  Route::put('student-status/{student}', ['uses' => 'StudentController@updateStatus', 'as' => 'student.status']);
 
 });
 
+Route::resource('school', 'SchoolController');
+Route::resource('training', 'TrainingController');
+Route::resource('option', 'OptionController');
 
 Route::post('registerstaff', 'Auth\RegisterController@registerStaff')->name('registerstaff');
 
 
-//Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'dashboard']);
 

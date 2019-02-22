@@ -99,6 +99,24 @@
                     </fieldset>
                     @endisset
 
+                    @isset($schoolFee)
+                    <fieldset>
+                      <legend> Informations de paiement </legend>
+                      <div class="row">
+                          <h5 class="col-md-5 text-md-right">Type de paiement : </h5>
+                          <h5 class="col-md-6">{{ $schoolFee->type }}</h5>
+                      </div>
+                      <div class="row">
+                          <h5 class="col-md-5 text-md-right">Montant Payé : </h5>
+                          <h5 class="col-md-6">${{ $schoolFee->pay }}USD</h5>
+                      </div>
+                      <div class="row">
+                          <h5 class="col-md-5 text-md-right">Montant restant à payer : </h5>
+                          <h5 class="col-md-6">${{ $schoolFee->letToPay }}USD</h5>
+                      </div>
+                    </fieldset>
+                    @endisset
+
                     @isset($folder)
                       <fieldset>
                         <legend> Pièces jointes </legend>
@@ -154,6 +172,10 @@
 
                       @case(2)
                         {!! link_to_route('register.pursuit', 'Poursuivre votre inscription', ['step' => '2'], ['class' => 'btn btn-info']) !!}
+                      @break
+
+                      @case(3)
+                        {!! link_to_route('register.pursuit', 'Poursuivre votre inscription', ['step' => '3'], ['class' => 'btn btn-info']) !!}
                       @break
                     @endswitch
                 </div>

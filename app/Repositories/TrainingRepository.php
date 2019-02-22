@@ -18,9 +18,6 @@ class TrainingRepository extends ResourceRepository
 
   public function getTrainingByUserId(int $id)
   {
-    return $this->model->findOrFail(
-      DB::table('student_training')->where('student_id', $id)->value('training_id')
-    );
+    return $this->getById(DB::table('student_training')->where('student_id', DB::table('students')->where('user_id', $id)->value('id'))->value('training_id'));
   }
-
 }

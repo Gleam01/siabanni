@@ -49,37 +49,41 @@ class FolderRepository extends ResourceRepository
 		  $folder->update($paths);
   }
 
+  private function checkFolderTwoValidations(Folder $folder)
+  {
+    return $folder->validateByStaffLevelOne == 1 && $folder->validateByStaffLevelTwo == 1;
+  }
   public function updateByStaff($id, $rank, $action)
   {
-    $folder = $this->model->getById($id);
-    if ($action === 'validate') {
+    $folder = $this->getById($id);
+    if ($action === 'accept') {
       switch ($rank) {
-        case 2:
-          $folder->validateByStaffLevelTwo = true;
+        case 1:
+          $folder->validateByStaffLevelOne = 1;
           $folder->save();
-          return $folder;
+          return ['folder' => $folder, 'validateByAllStaff' => $this->checkFolderTwoValidations($folder)];
         break;
 
-        case 3:
-          $folder->validateByStaffLevelThree = true;
+        case 2:
+          $folder->validateByStaffLevelTwo = 1;
           $folder->save();
-          return $folder;
+          return ['folder' => $folder, 'validateByAllStaff' => $this->checkFolderTwoValidations($folder)];
         break;
       }
     }
 
     elseif ($action === 'reject') {
       switch ($rank) {
-        case 2:
-          $folder->validateByStaffLevelTwo = false;
+        case 1:
+          $folder->validateByStaffLevelOne = -1;
           $folder->save();
-          return $folder;
+          return ['folder' => $folder, 'validateByAllStaff' => $this->checkFolderTwoValidations($folder)];
         break;
 
-        case 3:
-          $folder->validateByStaffLevelThree = false;
+        case 2:
+          $folder->validateByStaffLevelTwo = -1;
           $folder->save();
-          return $folder;
+          return ['folder' => $folder, 'validateByAllStaff' => $this->checkFolderTwoValidations($folder)];
         break;
       }
     }
@@ -92,6 +96,16 @@ class FolderRepository extends ResourceRepository
             DB::table('students')->where('user_id', $id)->first()->id
     )->first();
 
+    }
+
+    public function getStudentByFolderId(int $id)
+    {
+      return App\Models\Student::where('id', $this->getById($id)->student_id)->first();
+    }
+
+    public function getUserByFolderId(int $id)
+    {
+      return App\Models\User::where('id', $this->getStudentByFolderId($id)->user_id)->first();
     }
 
 }

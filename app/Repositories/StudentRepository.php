@@ -30,5 +30,5 @@ class StudentRepository extends ResourceRepository
   public function getStudentByUserId($id)
   {
     return $this->model->where('user_id', $id)->first();
-  }
+	}
 }

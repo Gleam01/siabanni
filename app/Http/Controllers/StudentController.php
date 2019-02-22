@@ -65,8 +65,9 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = $this->studentRepository->getById($id);
+        $schoolFee = DB::table('school_fees')->where([['student_id', '=', $id], ['type', '=', 'Admission']])->first();
 
-        return view('students.show', compact('student'));
+        return view('students.show', compact('student', 'schoolFee'));
     }
 
     /**
@@ -157,9 +158,10 @@ class StudentController extends Controller
         return back();
     }
 
-    public function updateStatus(StudentStatusRequest $request)
+    public function updateStatus($id, StudentStatusRequest $request)
     {
-      $this->studentRepository->updateStatus($request->input('id'), $request->input('status'));
-      return response()->json();
+      $this->studentRepository->update($id, ['status' => $request->status]);
+      $student = $this->studentRepository->getById($id);
+      return back()->with(['success' => 'Le statut de '.$request->status.' a été attribué à l\'étudiant '.$student->firstName.' '.$student->lastName]);
     }
 }

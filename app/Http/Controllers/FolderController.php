@@ -18,6 +18,15 @@ use App\Repositories\{
     UserRepository
 };
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\FolderAccepted;
+
+use App\Models\{
+    User,
+    Student
+};
+
 class FolderController extends Controller
 {
     protected $folderRepository,
@@ -34,7 +43,6 @@ class FolderController extends Controller
     ) {
         $this->middleware('auth');
         $this->middleware('admin', ['only' => ['index', 'delete']]);
-        $this->middleware('ajax', ['only' => ['accept', 'reject']]);
         $this->folderRepository = $folderRepository;
         $this->studentRepository = $studentRepository;
         $this->userRepository = $userRepository;
@@ -149,28 +157,38 @@ class FolderController extends Controller
         return back();
     }
 
+    private function sendMail($folder_id)
+    {
+        $user = $this->folderRepository->getgetUserByFolderId($folder_id);
+        $student = $this->folderRepository->getStudentByFolderId($folder_id);
+        Mail::to($user->email)->send(new FolderAccepted($user, $student));
+    }
+
+    public function acceptByStaffLevelOne($id)
+    {
+      $result = $this->folderRepository->updateByStaff($id, 1, 'accept');
+      if ($result['validateByAllStaff']) 
+        $this->sendMail($id);
+      return back();
+    }
+
+    public function rejectByStaffLevelOne($id)
+    {
+      $this->folderRepository->updateByStaff($id, 1, 'reject');
+      return back();
+    }
 
     public function acceptByStaffLevelTwo($id)
     {
-      $this->folderRepository->updateByStaff($id, 2, 'accept');
+      $result = $this->folderRepository->updateByStaff($id, 2, 'accept');
+      if ($result['validateByAllStaff']) 
+        $this->sendMail($id);
       return back();
     }
 
     public function rejectByStaffLevelTwo($id)
     {
       $this->folderRepository->updateByStaff($id, 2, 'reject');
-      return back();
-    }
-
-    public function acceptByStaffLevelThree($id)
-    {
-      $this->folderRepository->updateByStaff($id, 3, 'accept');
-      return back();
-    }
-
-    public function rejectByStaffLevelThree($id)
-    {
-      $this->folderRepository->updateByStaff($id, 3, 'reject');
       return back();
     }
 }
