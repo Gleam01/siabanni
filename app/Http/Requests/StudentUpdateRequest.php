@@ -24,16 +24,17 @@ class StudentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-          'firstName' => 'required|string|between:3,255',
-          'lastName' => 'required|string|between:3,255',
-          'birthday' => 'required|date|before:01 January 2003',
-          'placeOfBirth' => 'required|string|max:255',
-          'phone' => 'required|string|digits:8',
-          'sex' => 'required|string|max:10',
-          'country' => 'required|string|max:255',
-          'province' => 'required|string|max:255',
-          'city' => 'required|string|max:255',
-          // 'status' => 'required|string|max:30'
+            'firstName' => 'required|string|between:3,255',
+            'lastName' => 'required|string|between:3,255',
+            'birthday' => 'required|date|before:01 January 2003',
+            'placeOfBirth' => 'required|string|max:255',
+            'phone' => 'required|string|digits:8',
+            'sex' => 'required|string|max:10',
+            'country' => 'required|string|max:255',
+            'province' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'training_id' => 'required|numeric',
+            'cycle' => 'required|string'
         ];
     }
 }

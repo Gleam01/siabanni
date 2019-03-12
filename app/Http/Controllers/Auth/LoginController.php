@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-     protected $redirectTo = '/home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,16 +36,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->setRedirectTo();
     }
 
-    public function setRedirectTo()
+    public function redirectPath()
     {
         if (Auth::user() !== null) {
-          $this->redirectTo = Auth::user()->admin==1 ? '/admin' : '/home';
+          return Auth::user()->admin==1 ? '/admin' : '/home';
         }
         else {
-          $this->redirectTo = '/home';
+          return '/home';
         }
     }
 }

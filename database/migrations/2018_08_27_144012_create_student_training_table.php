@@ -17,7 +17,7 @@ class CreateStudentTrainingTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('student_id');
             $table->unsignedInteger('training_id');
-            $table->date('dateOfRegistration')->nullable();
+            $table->dateTime('dateOfRegistration')->nullable();
             $table->unsignedInteger('semester')->nullable();
             $table->string('cycle');
             $table->boolean('admissionFeesPayement')->default(false);

@@ -18,6 +18,7 @@ class OptionTableSeeder extends Seeder
           'code' => str_random(10),
           'name' => 'Option Number '.$i,
           'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          'avatar' => 'options_avatars/siabanni_db.png',
           'training_id' => rand(1, 10)
         ]);
       }

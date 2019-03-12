@@ -4,6 +4,8 @@ use App\Management\PictureManagementInterface;
 
 class PictureManagement implements PictureManagementInterface
 {
+  static $picture_upload_count = 0;
+
   public function generateStudentFolderName(array $student)
   {
     $folder = config('folders.path');
@@ -63,14 +65,39 @@ class PictureManagement implements PictureManagementInterface
     return $paths;
   }
 
-
   public function update(array $student, array $imagesToDelete, array $imagesToSave)
   {
     foreach ($imagesToDelete as $image) {
-      if ($image !== null && file_exists($image)) unlik($image);
+      if ($image !== null && file_exists($image)) unlink($image);
     }
-
     return $this->save($student, $imagesToSave);
   }
 
+  private function generateRandomName()
+  {
+    self::$picture_upload_count++;
+    return str_random(31).self::$picture_upload_count;
+  }
+
+  public function savePicture($image, $folder)
+  {
+    
+    if(!$image->isValid())
+      return false;
+
+    $extension = $image->getClientOriginalExtension();
+    $name = $this->generateRandomName().'.'.$extension;
+
+    if ($image->move($folder, $name))
+      return $folder.''.$name;
+
+    else
+      return false;
+  }
+
+  public function updatePicture($path, $image, $folder)
+  {
+    if ($path !== null && file_exists($path)) unlink($path);
+    return $this->savePicture($image, $folder);
+  }
 }

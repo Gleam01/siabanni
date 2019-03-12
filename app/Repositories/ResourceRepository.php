@@ -1,10 +1,16 @@
 <?php
 namespace App\Repositories;
+use Illuminate\Support\Facades\DB;
 
 abstract class ResourceRepository
 {
 
-  protected $model;
+	protected $model;
+	
+	public function getAll()
+	{
+		return $this->model->all();
+	}
 
   public function getPaginate($n)
 	{
@@ -34,6 +40,10 @@ abstract class ResourceRepository
   public function updateRedirectRoute($request, $admin)
   {
       return $request->user()->admin === 1 ? $admin : 'dashboard';
+  }
+
+  public function getStudentIDByUserID($id) {
+      return DB::table('students')->where('user_id', $id)->value('id');
   }
 
 }

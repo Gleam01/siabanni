@@ -26,6 +26,11 @@
                             <li><a href="{{route('back.students-invoice')}}">Students Invoice</a></li>
                         </ul>
                     </li>
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-accounts-outline"></i><span>Dossiers</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="{{route('folder.index')}}">Tous les Dossiers</a></li>
+                        </ul>
+                    </li>
                     <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-accounts-alt"></i><span>Professors</span> </a>
                         <ul class="ml-menu">
                             <li><a href="{{route('back.professors')}}">All Professors</a></li>
@@ -54,11 +59,23 @@
                             <li><a href="{{route('back.add-departments')}}">Add Departments</a></li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-graduation-cap"></i><span>Courses</span> </a>
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-graduation-cap"></i><span>Entités</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="{{route('back.courses')}}">All Courses</a></li>
-                            <li><a href="{{route('back.add-courses')}}">Add Courses</a></li>
-                            <li><a href="{{route('back.courses-info')}}">Courses Info</a></li>
+                            <li><a href="{{route('school.index')}}">Toutes les entités</a></li>
+                            <li><a href="{{route('school.create')}}">Ajouter une entité</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-graduation-cap"></i><span>Filière</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="{{route('training.index')}}">Toutes les filières</a></li>
+                            <li><a href="{{route('training.create')}}">Ajouter une filière</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-graduation-cap"></i><span>Options</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="{{route('option.index')}}">Toutes les options</a></li>
+                            <li><a href="{{route('option.create')}}">Ajouter une option</a></li>
                         </ul>
                     </li>
                     <li><a href="{{route('back.library')}}"><i class="zmdi zmdi-book"></i><span>Library</span> </a></li>

@@ -9,7 +9,7 @@ class Folder extends Model
   protected $fillable = [
     'birthCertificate', 'nationalityCertificate', 'attestation', 'bulletin',
     'NICReference', 'picture', 'validateByStaffLevelOne',
-    'validateByStaffLevel', 'student_id',
+    'validateByStaffLevelTwo', 'student_id',
   ];
 
   public function student()

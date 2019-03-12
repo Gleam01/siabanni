@@ -27,8 +27,8 @@ class StudentRepository extends ResourceRepository
     $this->getById($id)->trainings()->detach()->delete();
   }
 
-  public function getUserByStudentId($id)
+  public function getStudentByUserId($id)
   {
     return $this->model->where('user_id', $id)->first();
-  }
+	}
 }

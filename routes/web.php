@@ -163,43 +163,36 @@ Route::prefix('admin')->group(function () {
 
   Route::get('search-results', ['uses' => 'BackViewController@search_results', 'as' => 'back.search-results']);
 
-  Route::put('accept-by-staff-level-two', ['uses' => 'FolderController@acceptByStaffLevelTwo', 'as' => 'folder.accept.staff.two']);
+  Route::put('accept-by-staff-level-one/{folder}', ['uses' => 'FolderController@acceptByStaffLevelOne', 'as' => 'folder.accept.staff.one']);
 
-  Route::put('reject-by-staff-level-two', ['uses' => 'FolderController@rejectByStaffLevelTwo', 'as' => 'folder.reject.staff.two']);
+  Route::put('reject-by-staff-level-one/{folder}', ['uses' => 'FolderController@rejectByStaffLevelOne', 'as' => 'folder.reject.staff.one']);
 
-  Route::put('accept-by-staff-level-three', ['uses' => 'FolderController@acceptByStaffLevelThree', 'as' => 'folder.accept.staff.three']);
+  Route::put('accept-by-staff-level-two/{folder}', ['uses' => 'FolderController@acceptByStaffLevelTwo', 'as' => 'folder.accept.staff.two']);
 
-  Route::put('reject-by-staff-level-three', ['uses' => 'FolderController@rejectByStaffLevelThree', 'as' => 'folder.reject.staff.three']);
+  Route::put('reject-by-staff-level-two/{folder}', ['uses' => 'FolderController@rejectByStaffLevelTwo', 'as' => 'folder.reject.staff.two']);
 
-  Route::put('student-status', ['uses' => 'StudentController@updateStatus', 'as' => 'student.status']);
+  Route::put('student-status/{student}', ['uses' => 'StudentController@updateStatus', 'as' => 'student.status']);
 
 });
 
+Route::resource('school', 'SchoolController');
+Route::resource('training', 'TrainingController');
+Route::resource('option', 'OptionController');
 
 Route::post('registerstaff', 'Auth\RegisterController@registerStaff')->name('registerstaff');
 
 
 Auth::routes(['verify' => true]);
 
+// Auth::routes();
+
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'dashboard']);
 
-//Generals informations GET/post
-Route::get('register-step-two', [
-  'uses' => 'Auth\RegisterController@showRegistrationStepTwoForm',
-  'as' => 'register.step-two'
-]);
-Route::post('register-step-two', [
-  'uses' => 'Auth\RegisterController@registerStepTwo', 'as' => 'register.step.two']);
 
-//Folders GET/post
-Route::get('register-step-three', ['uses' => 'Auth\RegisterController@showRegistrationStepThreeForm', 'as' => 'register.step-three']);
-Route::post('register-step-three', ['uses' => 'Auth\RegisterController@registerStepThree', 'as' => 'register.step.three']);
-
-Route::get('register-training-choosing', ['uses' => 'Auth\RegisterController@showRegistrationTrainingChoosingForm', 'as' => 'register.training-choosing']);
-Route::post('register-training-choosing', ['uses' => 'Auth\RegisterController@registerTrainingChoosing', 'as' => 'register.training.choosing']);
-
-Route::get('register-pursuit/{step}', ['uses' => 'Auth\RegisterController@pursuitRegistration', 'as' => 'register.pursuit'])->where('step', '[1-4]?');
+Route::get('pursuit-registration/{step}', ['uses' => 'HomeController@pursuitRegistration', 'as' => 'register.pursuit'])->where('step', '[1-4]?');
 
 Route::resource('user', 'UserController', ['except' => ['create', 'store']]);
-Route::resource('student', 'StudentController', ['except' => ['create', 'store']]);
-Route::resource('folder', 'FolderController', ['except' => ['create', 'store']]);
+Route::resource('student', 'StudentController');
+Route::resource('folder', 'FolderController');
+Route::get('admission', 'AdmissionPaymentController@create')->name('admission.create');
+Route::post('admission', 'AdmissionPaymentController@store')->name('admission.store');

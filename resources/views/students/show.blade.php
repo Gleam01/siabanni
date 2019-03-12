@@ -19,8 +19,27 @@
             <p>Département : {{ $student->province }}</p>
             <p>Ville : {{ $student->city }}</p>
             @foreach ($student->trainings as $training)
-              <p>Filière : {{ $training->name }}</p>
+              <p>Filière (s) : {{ $training->name }}</p>
+              <p>Frais d'admission : ${{ $training->admissionFees }}USD</p>
             @endforeach
+
+            @isset($schoolFee)
+              <fieldset>
+                <legend> Informations de paiement de frais d'admission</legend>
+                <div class="row">
+                    <h5 class="col-md-5 text-md-right">Type de paiement : </h5>
+                    <h5 class="col-md-6">{{ $schoolFee->type }}</h5>
+                </div>
+                <div class="row">
+                    <h5 class="col-md-5 text-md-right">Montant Payé : </h5>
+                    <h5 class="col-md-6">${{ $schoolFee->pay }}USD</h5>
+                </div>
+                <div class="row">
+                    <h5 class="col-md-5 text-md-right">Montant restant à payer : </h5>
+                    <h5 class="col-md-6">${{ $schoolFee->letToPay }}USD</h5>
+                </div>
+              </fieldset>
+            @endisset
           <div class="card-footer">
             <a href="javascript:history.back()" class="btn btn-primary">
               <span class="glyphicon glyphicon-circle-arrow-left"></span> Retour

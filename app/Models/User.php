@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable// implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -18,7 +18,7 @@ class User extends Authenticatable// implements MustVerifyEmail
      */
     protected $fillable = [
       'login', 'email', 'password', 'admin',
-      'confirmation_code', 'confirmed', 'step', 'rank'
+      'email_verified_at', 'step', 'rank'
     ];
 
     /**

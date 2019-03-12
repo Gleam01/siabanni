@@ -17,9 +17,10 @@ class TrainingTableSeeder extends Seeder
         DB::table('trainings')->insert([
           'code' => str_random(10),
           'name' => 'Training Number '.$i,
-          'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          'fees' => rand(200000, 450000),
           'admissionFees' => rand(5000, 15000),
+          'fees' => rand(15000, 400000),
+          'description' => 'Description ' .$i. ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          'avatar' => 'trainings_avatars/siabanni_db.png',
           'school_id' => rand(1, 10)
         ]);
       }

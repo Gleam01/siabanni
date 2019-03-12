@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Student;
-use App\Models\Folder;
+use App\Models\{
+    Student,
+    Folder,
+    SchoolFee
+};
 
 class HomeController extends Controller
 {
-    protected $studentRepository, $folderRepository;
     /**
      * Create a new controller instance.
      *
@@ -28,16 +29,39 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $user = Auth::user();
-      if ($user !== NULL)
-        $student = Student::where('user_id', $user->id)->get()->first();
-      if ($student !== NULL)
-        $folder = Folder::where('student_id', $student->id)->get()->first();
-      if ($user->step === 1)
-        return view('home', compact('user'));
-      elseif ($user->step === 2)
-        return view('home', compact('user', 'student'));
-      elseif ($user->step === 3)
-        return view('home', compact('user', 'student', 'folder'));
+        $user = Auth::user();
+        $student = $user !== NULL ? Student::where('user_id', $user->id)->first() : NULL;
+        $schoolFee = $student !== NULL ? SchoolFee::where('student_id', $student->id)->first() : NULL;
+        $folder = $student !== NULL ? Folder::where('student_id', $student->id)->first() : NULL;
+        if ($user->step === 1)
+            return view('home', compact('user'));
+        elseif ($user->step === 2)
+            return view('home', compact('user', 'student'));
+        elseif ($user->step === 3)
+            return view('home', compact('user', 'student', 'folder'));
+        elseif ($user->step === 4)
+            return view('home', compact('user', 'student', 'folder', 'schoolFee'));
+    }
+
+    /**
+     * Holds an user registration pursuit.
+     *
+     * @param   mixed $step
+     * @return \Illuminate\Http\Response
+     */
+    public function pursuitRegistration($step)
+    {
+        switch ($step) {
+            case '1':
+                return redirect()->route('student.create');
+                break;
+
+            case '2':
+                return redirect()->route('folder.create');
+                break;
+            case '3':
+                return redirect()->route('admission.create');
+                break;
+        }
     }
 }
